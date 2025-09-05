@@ -42,7 +42,7 @@ function voteDown (newid) {
           @voteDown="voteDown($event)"
     />
   </div>
-  <p>hallo es hat fuktioniert</p>
+
 </template>
 
 <style>
