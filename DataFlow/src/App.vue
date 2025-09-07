@@ -1,6 +1,6 @@
 <script  setup lang="ts">
 import { faker } from '@faker-js/faker'
-import { ref } from 'vue'
+import {computed, ref} from 'vue'
 import Post from './components/Post.vue'
 
 const unSortedposts = ref([
@@ -15,7 +15,7 @@ const unSortedposts = ref([
   { id: 9, title: faker.lorem.words(10), text: faker.lorem.paragraph(), user: faker.internet.userName(), votes: 15 },
 ])
 const posts = computed(() =>
-    [...unSortedPosts.value].sort((a, b) => b.votes - a.votes)
+    [...unSortedposts.value].sort((a, b) => b.votes - a.votes)
 );
 function voteUp (newid) {
   console.log('voteUp', newid)

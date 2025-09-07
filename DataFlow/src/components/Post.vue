@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineEmits(['voteUp','voteDown']);
-defineProps<{
+const prop = defineProps<{
   id: number
   title?: string
   text?: string
@@ -12,25 +12,25 @@ defineProps<{
 <template>
   <div class="post">
     <div class="post__votes voter">
-      <button class="voter__action" @click="$emit('voteUp', id)">
+      <button class="voter__action" @click="$emit('voteUp', prop.id)">
         👍
       </button>
       <div class="voter__votes">
-        {{ votes }}
+        {{ prop.votes }}
       </div>
-      <button class="voter__action" @click="$emit('voteDown', id)">
+      <button class="voter__action" @click="$emit('voteDown', prop.id)">
         👎
       </button>
     </div>
     <div class="post__content">
       <div class="post__user">
-        von {{ user }}
+        von {{ prop.user }}
       </div>
       <div class="post__title">
-        {{ title }}
+        {{ prop.title }}
       </div>
       <div class="post__text">
-        {{ text }}
+        {{ prop.text }}
       </div>
     </div>
   </div>
