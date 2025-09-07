@@ -16,8 +16,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04   # feste Ubuntu-Version
-
+    runs-on: ubuntu-22.04   
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,18 +24,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18   # oder 20, je nach Projekt
+          node-version: 20 
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
+        working-directory: ./DataFlow
 
       - name: Build project
         run: npm run build
+        working-directory: ./DataFlow
 
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./DataFlow/dist
 
   deploy:
     runs-on: ubuntu-22.04
